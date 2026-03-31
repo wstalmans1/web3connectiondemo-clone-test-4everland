@@ -1,0 +1,14 @@
+title = "tba-damiros Gitleaks Config"
+
+[extend]
+# Extend the official default ruleset
+useDefault = true
+
+# ── Allowlist ─────────────────────────────────────────────
+# Add false-positive patterns here as you encounter them.
+# Each entry must be documented with a reason.
+
+[[allowlists]]
+description = "Placeholder values in .env.example files are not real secrets"
+paths = [".env.example"]
+

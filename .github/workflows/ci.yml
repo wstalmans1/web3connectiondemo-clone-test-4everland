@@ -22,9 +22,9 @@ on:
 
 jobs:
   pipeline:
-    uses: tba-damiros/cicd-workflows/.github/workflows/reusable-frontend-deploy.yml@main
+    uses: wstalmans1/cicd-workflows-clone-test-4everland/.github/workflows/reusable-frontend-deploy.yml@main
     with:
-      pin-name-prefix: web3connectiondemo.eth
+      pin-name-prefix: web3connectiondemo-clone-test-4everland
       node-version: '20'
       pnpm-version: '10'
 
