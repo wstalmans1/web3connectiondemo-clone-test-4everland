@@ -91,7 +91,7 @@ function AppContent() {
           {/* Footer */}
           <div className="text-center mt-8">
             <p className="text-xs text-gray-400 dark:text-gray-500">
-              Build 2026-03-31 — Served via IPFS (CI test v4)
+              Build 2026-03-31 — Served via IPFS (CI test v5)
             </p>
           </div>
       </div>
