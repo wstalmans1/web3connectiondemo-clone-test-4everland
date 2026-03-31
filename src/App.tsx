@@ -14,9 +14,9 @@ function AppContent() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-testid="app-header">
             <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Web3 Connection Demo
+              Web3 Connection Demo (pipeline test)
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300">
               Connect your wallet using RainbowKit v2
@@ -91,7 +91,7 @@ function AppContent() {
           {/* Footer */}
           <div className="text-center mt-8">
             <p className="text-xs text-gray-400 dark:text-gray-500">
-              Build 2026-03-10 — Served via IPFS
+              Build 2026-03-31 — Served via IPFS (CI test)
             </p>
           </div>
       </div>
