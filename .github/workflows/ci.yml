@@ -1,0 +1,31 @@
+# ============================================================
+# CALLER WORKFLOW TEMPLATE
+# Copy this file into each dApp repo at:
+#   .github/workflows/ci.yml
+#
+# Change ONLY:
+#   - pin-name-prefix → your dApp's display name
+#   - pnpm-version   → must match engines.pnpm in package.json
+#   - build-env      → add KEY=VALUE pairs your Vite build needs
+#                      (optional — omit entirely if your app needs none)
+#
+# Everything else is inherited from tba-damiros/cicd-workflows.
+# Update the pipeline repo once → all dApps inherit it.
+# ============================================================
+
+name: Build & Pin to IPFS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    uses: tba-damiros/cicd-workflows/.github/workflows/reusable-frontend-deploy.yml@main
+    with:
+      pin-name-prefix: web3connectiondemo.eth
+      node-version: '20'
+      pnpm-version: '10'
+
+    secrets: inherit

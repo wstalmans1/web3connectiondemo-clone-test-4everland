@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web3 Connection Demo</title>
+
+    <!--
+      Content Security Policy
+      =======================
+      All directives except frame-ancestors are enforced here via <meta>.
+      frame-ancestors CANNOT be set via <meta> — the spec forbids it.
+      To enforce frame-ancestors, the HTTP gateway (e.g. eth.limo) must send:
+        Content-Security-Policy: frame-ancestors 'none'
+        X-Frame-Options: DENY
+      Until that is confirmed, the JS snippet below provides best-effort
+      clickjacking protection.
+
+      script-src notes:
+      - 'unsafe-eval' is required by WalletConnect SDK internals (unavoidable).
+      - The sha256 hash allows the specific inline script injected by WalletConnect's
+        initCCA (Cloud Companion App / verify feature) at runtime. Using a hash instead
+        of 'unsafe-inline' means only that exact script is permitted — any change to
+        the script content will block it until the hash is reviewed and updated.
+
+      connect-src covers the default public RPC transports used by wagmi/viem
+      for each supported chain, plus WalletConnect relay and API endpoints.
+      If you switch to private RPC URLs, update connect-src to match.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'none';
+        script-src 'self'
+          'unsafe-eval'
+          'sha256-NzvNrqk5jB9YZATwo5BF4JoRlJ02HsnFikbKXgEPdaQ=';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: https:;
+        font-src 'self';
+        connect-src
+          'self'
+          https://eth.merkle.io
+          https://cloudflare-eth.com
+          https://rpc.sepolia.org
+          https://polygon-rpc.com
+          https://mainnet.optimism.io
+          https://arb1.arbitrum.io
+          https://mainnet.base.org
+          https://api.web3modal.org
+          https://*.walletconnect.com
+          https://*.walletconnect.org
+          wss://*.walletconnect.com
+          wss://*.walletconnect.org;
+        frame-src 'none';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+      "
+    />
+  </head>
+  <body>
+    <!--
+      Frame-busting: best-effort defence against clickjacking while
+      frame-ancestors cannot be set at the HTTP layer on IPFS gateways.
+      This does not replace a proper frame-ancestors HTTP header.
+      Kept as a separate file so script-src 'self' allows it.
+    -->
+    <script src="/frame-bust.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
